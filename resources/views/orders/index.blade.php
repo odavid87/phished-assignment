@@ -35,7 +35,7 @@
                         <td>{{$order->created_at}}</td>
                         <td class="td-actions text-right">
                             {!! Form::open(['route' => ['order.destroy', $order->id + 1], 'method' => 'delete']) !!}
-                                <a href="{!! route('order.show', [$order->id]) !!}" class='btn btn-info'><i class="material-icons">person</i></a>
+                                <a href="{!! route('order.show', [$order->id]) !!}" class='btn btn-info'><i class="material-icons">edit</i></a>
                                 {!! Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'return confirm("'.__('Are you sure?').'")']) !!}
                             {!! Form::close() !!}
                         </td>

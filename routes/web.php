@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){ return redirect()->route('order.index'); });
 
 Route::resource('/order', OrderController::class)->only(['index', 'show', 'destroy']);
+Route::get('/order-html/{id}', [\App\Http\Controllers\HtmlEmailContentController::class, 'renderOrder'])->name('order.html');
+
 Route::get('/fetch', function(){
     \App\Jobs\OrderEmailFetcher::dispatchSync();
     return redirect()->route('order.index');
