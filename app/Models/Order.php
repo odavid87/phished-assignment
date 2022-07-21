@@ -16,4 +16,10 @@ class Order extends Model
         'message_id',
         'order_details',
     ];
+
+    public function getIsRepliedAttribute()
+    {
+        // TODO implement
+        return false;
+    }
 }

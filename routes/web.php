@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function(){ return redirect()->route('order.index'); });
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('/order', OrderController::class)->only(['index', 'show', 'destroy']);
+Route::get('/fetch', function(){
+    \App\Jobs\OrderEmailFetcher::dispatchSync();
+    return redirect()->route('order.index');
 });
