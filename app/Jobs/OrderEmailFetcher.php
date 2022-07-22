@@ -44,7 +44,7 @@ class OrderEmailFetcher implements ShouldQueue
     {
         $attributes = $emailMessage->getAttributes();
         Order::insertOrIgnore([
-            'customer_name' => $attributes['from']->first()->personal,
+            'customer_name' => $attributes['from']->first()->mailbox,
             'customer_email' => $attributes['from']->first()->mail,
             'message_id' => \Str::limit($attributes['message_id']->first(), 255, ''),
             'order_details' => json_encode([
