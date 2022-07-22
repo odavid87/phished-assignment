@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d893da8d0926b4a849f4e0d29f1f1c79",
+    "content-hash": "7b9c5e289231c3f52444bb6cca15af6c",
     "packages": [
         {
             "name": "brick/math",
@@ -3157,6 +3157,74 @@
                 }
             ],
             "time": "2022-03-27T21:42:02+00:00"
+        },
+        {
+            "name": "snipe/safebrowsing",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/snipe/Safebrowsing.git",
+                "reference": "7351c695350f6d4b1592396c77bfa74b13b93e15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/snipe/Safebrowsing/zipball/7351c695350f6d4b1592396c77bfa74b13b93e15",
+                "reference": "7351c695350f6d4b1592396c77bfa74b13b93e15",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.15"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Snipe\\Safebrowsing\\SafebrowsingServiceProvider"
+                    ],
+                    "aliases": {
+                        "Safebrowsing": "Snipe\\Safebrowsing\\Facade\\Safebrowsing"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Snipe\\Safebrowsing\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "A. Gianotto",
+                    "email": "snipe@snipe.net",
+                    "homepage": "http://snipe.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package to allow you to easily integrate the Google Safebrowing API into your application.",
+            "homepage": "https://github.com/snipe/safebrowsing",
+            "keywords": [
+                "Snipe",
+                "google",
+                "malware",
+                "rbl",
+                "safebrowsing",
+                "url"
+            ],
+            "support": {
+                "issues": "https://github.com/snipe/Safebrowsing/issues",
+                "source": "https://github.com/snipe/Safebrowsing/tree/master"
+            },
+            "time": "2018-10-16T03:11:25+00:00"
         },
         {
             "name": "symfony/console",
@@ -8389,7 +8457,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "snipe/safebrowsing": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

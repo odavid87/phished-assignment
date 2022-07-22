@@ -14,6 +14,7 @@
         "laravelcollective/html": "^6.3",
         "mews/purifier": "^3.3",
         "predis/predis": "^2.0",
+        "snipe/safebrowsing": "0.1.0.x-dev",
         "webklex/laravel-imap": "^2.4"
     },
     "require-dev": {

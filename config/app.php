@@ -186,6 +186,7 @@ return [
          * Package Service Providers...
          */
         Mews\Purifier\PurifierServiceProvider::class,
+        Snipe\Safebrowsing\SafebrowsingServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -212,6 +213,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'Safebrowsing' => Snipe\Safebrowsing\Facade\Safebrowsing::class,
     ])->toArray(),
 
 ];
