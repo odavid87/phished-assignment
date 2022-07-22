@@ -1,0 +1,54 @@
+version: "3.7"
+
+services:
+  webserver:
+    image: 'thecodingmachine/php:8.1-v4-apache-node16'
+    container_name: 'phished-server'
+    working_dir: /var/www/html/
+    depends_on:
+      - mysql
+    ports:
+      - '80:80'
+    networks:
+      - phishednet
+    extra_hosts:
+      - "localhost:172.17.0.1"
+    volumes:
+      - ../:/var/www/html/
+    environment:
+      APPLICATION_ENV: development
+      TEMPLATE_PHP_INI: production
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+  mysql:
+    image: percona:5.7.29
+    container_name: 'phished-mysql'
+    networks:
+      - phishednet
+    volumes:
+      - './data/mysql:/var/lib/mysql:delegated'
+      - './config/mysql/conf.d:/etc/mysql/conf.d'
+    environment:
+      MYSQL_ROOT_PASSWORD: tiger
+      MYSQL_DATABASE: phished
+      MYSQL_USER: phished
+      MYSQL_PASSWORD: tiger
+  redis:
+    image: redis:alpine
+    command: redis-server
+    networks:
+      - phishednet
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=tiger
+      - UPLOAD_LIMIT=200000000
+    ports:
+      - '8889:80'
+    networks:
+      - phishednet
+    volumes:
+      - /sessions
+networks:
+  phishednet:
