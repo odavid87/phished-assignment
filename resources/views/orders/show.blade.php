@@ -96,7 +96,7 @@
             <h3 class="mb-3">Reply</h3>
             {!! Form::open(['route' => ['order.reply', $order->id], 'method' => 'post']) !!}
                 <div id="editor"></div>
-                <input type="hidden" name="reply_html" id="reply_html">
+                <input type="hidden" name="reply_details" id="reply_html">
                 <button class="btn btn-success mt-4">Send</button>
             {!! Form::close() !!}
         </div>
@@ -117,14 +117,22 @@
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             var quill = new Quill('#editor', {
-                theme: 'snow'
+                theme: 'snow',
+                placeholder: 'Compose a reply...',
+                modules: {
+                    clipboard: {
+                        matchVisual: false
+                    }
+                }
             });
 
             var form = document.querySelector("form");
             var hiddenInput = document.querySelector('#reply_html');
 
             form.addEventListener('submit', function(e){
-                hiddenInput.value = quill.root.innerHTML;
+                if (quill.getText() !== '\n') {
+                    hiddenInput.value = quill.root.innerHTML;
+                }
             });
         });
     </script>

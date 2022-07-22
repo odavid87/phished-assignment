@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOrderReply;
 use App\Jobs\SendReplyEmail;
 use App\Models\Order;
 
 class OrderReplyController extends Controller
 {
-    public function sendReply($id)
+    public function sendReply(CreateOrderReply $request, $id)
     {
         $orderReply = Order::findOrFail($id)->replies()->create([
-            'reply_details' => clean(request('reply_html'))
+            'reply_details' => clean(request('reply_details'))
         ]);
         SendReplyEmail::dispatch($orderReply);
 
