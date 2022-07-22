@@ -60,6 +60,36 @@
             </div>
         </div>
     </div>
+    @if($order->is_replied)
+    <div class="card">
+        <div class="card-body">
+            <a id="reply"></a>
+            <h3 class="mb-3">Your previous replies</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#id</th>
+                        <th>Email</th>
+                        <th>Reply sent at</th>
+                        <th>Preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($order->replies as $orderReply)
+                        <tr>
+                            <td>{{$orderReply->id}}</td>
+                            <td>{{$order->customer_email}}</td>
+                            <td>{{$orderReply->created_at}}</td>
+                            <td>
+                                <a href="{!! route('order.reply.preview', $orderReply) !!}" target="_blank">Preview</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @endif
     <div class="card">
         <div class="card-body">
             <a id="reply"></a>

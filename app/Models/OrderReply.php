@@ -10,4 +10,9 @@ class OrderReply extends Model
         'order_id',
         'reply_details',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

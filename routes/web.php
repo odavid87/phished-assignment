@@ -19,6 +19,9 @@ Route::resource('/order', OrderController::class)->only(['index', 'show', 'destr
 Route::post('/order-reply/{id}', [OrderController::class, 'sendReply'])->name('order.reply');
 //Route::get('/order-html/{id}', [\App\Http\Controllers\HtmlEmailContentController::class, 'renderOrder'])->name('order.html');
 
+Route::get('/order-reply-preview/{id}', function($id){
+    return new \App\Mail\OrderReply(\App\Models\OrderReply::findOrFail($id));
+})->name('order.reply.preview');
 
 // Routes for development purposes only
 if (env('APP_ENV', 'local') === 'local') {

@@ -23,7 +23,11 @@
                 @foreach($orders as $order)
                     <tr>
                         <td class="text-center">{{$order->id}}</td>
-                        <td>{{$order->customer_name}}</td>
+                        <td>
+                            <a href="{!! route('order.show', [$order->id]) !!}">
+                                {{$order->customer_name}}
+                            </a>
+                        </td>
                         <td>{{$order->customer_email}}</td>
                         <td>
                             @if($order->is_replied)
