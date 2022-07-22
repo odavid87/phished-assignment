@@ -20,3 +20,6 @@ bash: ## Bash in webserver container
 
 start-worker: ## Starts the queue worker process
 	docker-compose exec -T webserver /bin/bash -c "php artisan queue:work --queue phished"
+
+run-scheduler: ## Runs php artisan schedule:run
+	docker-compose exec -T webserver /bin/bash -c "php artisan schedule:run"
