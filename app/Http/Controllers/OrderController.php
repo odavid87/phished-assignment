@@ -10,7 +10,7 @@ class OrderController extends Controller
     public function index()
     {
         return view('orders.index', [
-            'orders' => Order::orderBy('created_at', 'DESC')->get()
+            'orders' => Order::orderBy('created_at', 'DESC')->paginate(25)
         ]);
     }
 

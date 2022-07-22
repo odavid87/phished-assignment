@@ -2792,8 +2792,10 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: #ffffff;
-  background-color: #00bcd4;
-  border-color: #00bcd4;
+  /*background-color: #00bcd4;*/
+    background-color: #0969DA;
+  /*border-color: #00bcd4;*/
+  border-color: #0969DA;
   box-shadow: none;
 }
 
@@ -8968,23 +8970,25 @@ a.text-dark:focus {
 
 .btn.btn-info {
   color: #fff;
-  background-color: #00bcd4;
-  border-color: #00bcd4;
+background-color: #0969DA;
+border-color: #0969DA;
   box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
 }
 
 .btn.btn-info:hover {
   color: #fff;
-  background-color: #00aec5;
-  border-color: #008697;
+    background-color: #0969DA;
+    border-color: #0969DA;
+  /*background-color: #00aec5;*/
+  /*border-color: #008697;*/
 }
 
 .btn.btn-info:focus,
 .btn.btn-info.focus,
 .btn.btn-info:hover {
   color: #fff;
-  background-color: #00aec5;
-  border-color: #008697;
+    background-color: #0969DA;
+    border-color: #0969DA;
 }
 
 .btn.btn-info:active,
@@ -9027,14 +9031,14 @@ a.text-dark:focus {
 .btn.btn-info.disabled.focus,
 .btn.btn-info:disabled:focus,
 .btn.btn-info:disabled.focus {
-  background-color: #00bcd4;
-  border-color: #00bcd4;
+    background-color: #0969DA;
+    border-color: #0969DA;
 }
 
 .btn.btn-info.disabled:hover,
 .btn.btn-info:disabled:hover {
-  background-color: #00bcd4;
-  border-color: #00bcd4;
+    background-color: #0969DA;
+    border-color: #0969DA;
 }
 
 .btn.btn-info:focus,
@@ -16308,12 +16312,12 @@ legend {
 }
 
 a {
-  color: #9c27b0;
+  color: #0969DA;
 }
 
 a:hover,
 a:focus {
-  color: #89229b;
+    color: #0969DA;
   text-decoration: none;
 }
 

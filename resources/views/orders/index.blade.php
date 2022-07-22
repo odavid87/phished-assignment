@@ -49,6 +49,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-body">
+            {{ $orders->links('layouts.pagination') }}
+        </div>
     </div>
 </div>
 @endsection
