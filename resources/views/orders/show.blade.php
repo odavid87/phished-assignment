@@ -62,9 +62,40 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h3>Reply</h3>
+            <a id="reply"></a>
+            <h3 class="mb-3">Reply</h3>
+            {!! Form::open(['route' => ['order.reply', $order->id], 'method' => 'post']) !!}
+                <div id="editor"></div>
+                <input type="hidden" name="reply_html" id="reply_html">
+                <button class="btn btn-success mt-4">Send</button>
+            {!! Form::close() !!}
         </div>
     </div>
 
 </div>
 @endsection
+@section('styles')
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        .ql-editor{
+            min-height:200px;
+        }
+    </style>
+@append
+@section('scripts')
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+
+            var form = document.querySelector("form");
+            var hiddenInput = document.querySelector('#reply_html');
+
+            form.addEventListener('submit', function(e){
+                hiddenInput.value = quill.root.innerHTML;
+            });
+        });
+    </script>
+@append

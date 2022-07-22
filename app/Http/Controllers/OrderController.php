@@ -36,4 +36,15 @@ class OrderController extends Controller
 
         return redirect()->back();
     }
+
+    public function sendReply($id)
+    {
+        $orderReply = Order::findOrFail($id)->replies()->create([
+            'reply_details' => clean(request('reply_html'))
+        ]);
+//        SendReplyEmail::dispatch($orderReply);
+
+        \Flash::success('Your reply will be sent soon.');
+        return redirect()->back();
+    }
 }

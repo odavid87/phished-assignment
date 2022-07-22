@@ -16,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){ return redirect()->route('order.index'); });
 
 Route::resource('/order', OrderController::class)->only(['index', 'show', 'destroy']);
-Route::get('/order-html/{id}', [\App\Http\Controllers\HtmlEmailContentController::class, 'renderOrder'])->name('order.html');
+Route::post('/order-reply/{id}', [OrderController::class, 'sendReply'])->name('order.reply');
+//Route::get('/order-html/{id}', [\App\Http\Controllers\HtmlEmailContentController::class, 'renderOrder'])->name('order.html');
 
-Route::get('/fetch', function(){
-    \App\Jobs\OrderEmailFetcher::dispatchSync();
-    return redirect()->route('order.index');
-});
+
+// Routes for development purposes only
+if (env('APP_ENV', 'local') === 'local') {
+    Route::get('/fetch', function(){
+        \App\Jobs\OrderEmailFetcher::dispatchSync();
+        return redirect()->route('order.index');
+    });
+}
+

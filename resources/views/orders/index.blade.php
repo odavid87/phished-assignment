@@ -27,14 +27,15 @@
                         <td>{{$order->customer_email}}</td>
                         <td>
                             @if($order->is_replied)
-                                <i class="fas fa-check-circle fa-2x text-success"></i>
+                                <i class="fas fa-check-circle fa-2x text-success"></i> <span class="text-success" style="position: relative; top: -4px;"> Replied already</span>
+
                             @else
-                                <i class="fas fa-times-circle fa-2x text-danger"></i>
+                                <i class="fas fa-times-circle fa-2x text-danger"></i> <a href="{!! route('order.show', [$order->id]) . "#reply" !!}" style="position: relative; top: -4px;">Send a reply</a>
                             @endif
                         </td>
                         <td>{{$order->created_at}}</td>
                         <td class="td-actions text-right">
-                            {!! Form::open(['route' => ['order.destroy', $order->id + 1], 'method' => 'delete']) !!}
+                            {!! Form::open(['route' => ['order.destroy', $order->id], 'method' => 'delete']) !!}
                                 <a href="{!! route('order.show', [$order->id]) !!}" class='btn btn-info'><i class="material-icons">edit</i></a>
                                 {!! Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'return confirm("'.__('Are you sure?').'")']) !!}
                             {!! Form::close() !!}

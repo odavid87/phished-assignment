@@ -17,9 +17,13 @@ class Order extends Model
         'order_details',
     ];
 
-    public function getIsRepliedAttribute()
+    public function replies()
     {
-        // TODO implement
-        return false;
+        return $this->hasMany(OrderReply::class)->orderByDesc('created_at');
+    }
+
+    public function getIsRepliedAttribute() : bool
+    {
+        return $this->replies()->exists();
     }
 }
